@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import logo from './assets/logo.png';
 
@@ -13,14 +13,31 @@ function App() {
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [error, setError] = useState('');
+  const [books, setBooks] = useState([]);
+  const [filters, setFilters] = useState({ state: '', city: '' });
 
-  const [books, setBooks] = useState([
+  // Fallback local caso a API não funcione
+  const localBooks = [
     { id: 1, title: 'O Senhor dos Anéis - J.R.R. Tolkien', status: 'Disponível', state: 'Santa Catarina', city: 'Chapecó' },
     { id: 2, title: '1984 - George Orwell', status: 'Indisponível', state: 'São Paulo', city: 'São Paulo' },
     { id: 3, title: 'Dom Casmurro - Machado de Assis', status: 'Disponível', state: 'Rio de Janeiro', city: 'Rio de Janeiro' },
-  ]);
+  ];
 
-  const [filters, setFilters] = useState({ state: '', city: '' });
+  // Buscar livros da API
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/books');
+        if (!response.ok) throw new Error('API indisponível');
+        const data = await response.json();
+        setBooks(data);
+      } catch (error) {
+        console.error('Erro ao buscar livros da API:', error.message);
+        setBooks(localBooks); // Fallback para livros locais
+      }
+    };
+    fetchBooks();
+  }, []);
 
   const handleLogin = () => {
     const user = users.find((user) => user.email === email && user.password === password);

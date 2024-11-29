@@ -1,2 +1,2 @@
-# Pr-ticas-Extensionistas-IV
+# Praticas-Extensionistas-IV
 MVP funcional utilizando tecnologias web

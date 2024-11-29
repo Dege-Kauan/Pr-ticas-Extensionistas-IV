@@ -5,7 +5,7 @@ A **Biblioteca Online** é uma aplicação web desenvolvida para gerenciar o emp
 
 O sistema foi desenvolvido como parte de um projeto acadêmico, atendendo aos requisitos de:
 1. Aplicação web responsiva;
-2. Aplicação mobile (via Progressive Web App - PWA);
+2. Aplicação mobile;
 3. API hospedada na nuvem;
 4. Infraestrutura de nuvem configurada.
 

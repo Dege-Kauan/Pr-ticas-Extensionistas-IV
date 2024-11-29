@@ -15,6 +15,16 @@ function App() {
   const [error, setError] = useState('');
   const [books, setBooks] = useState([]);
   const [filters, setFilters] = useState({ state: '', city: '' });
+  const [newBook, setNewBook] = useState({
+    title: '',
+    author: '',
+    genre: '',
+    availability: 'Disponível',
+    state: '',
+    city: '',
+  });
+  const [showAddBookForm, setShowAddBookForm] = useState(false);
+  const [addBookError, setAddBookError] = useState('');
 
   // Fallback local caso a API não funcione
   const localBooks = [
@@ -23,7 +33,6 @@ function App() {
     { id: 3, title: 'Dom Casmurro - Machado de Assis', status: 'Disponível', state: 'Rio de Janeiro', city: 'Rio de Janeiro' },
   ];
 
-  // Buscar livros da API
   useEffect(() => {
     const fetchBooks = async () => {
       try {
@@ -38,6 +47,38 @@ function App() {
     };
     fetchBooks();
   }, []);
+
+  const handleAddBook = async () => {
+    if (!newBook.title || !newBook.author || !newBook.genre || !newBook.state || !newBook.city) {
+      setAddBookError('Todos os campos são obrigatórios.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3001/books', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newBook),
+      });
+
+      if (response.ok) {
+        const message = await response.json();
+        alert(message.message);
+        setBooks([...books, { ...newBook, id: books.length + 1 }]);
+        setNewBook({ title: '', author: '', genre: '', availability: 'Disponível', state: '', city: '' });
+        setShowAddBookForm(false);
+        setAddBookError('');
+      } else {
+        const errorData = await response.json();
+        setAddBookError(errorData.error || 'Erro ao adicionar o livro.');
+      }
+    } catch (error) {
+      console.error('Erro ao adicionar o livro:', error.message);
+      setAddBookError('Erro ao conectar com o servidor.');
+    }
+  };
 
   const handleLogin = () => {
     const user = users.find((user) => user.email === email && user.password === password);
@@ -220,6 +261,46 @@ function App() {
                 ))}
               </ul>
             </div>
+            <button onClick={() => setShowAddBookForm(!showAddBookForm)}>
+              {showAddBookForm ? 'Cancelar' : 'Adicionar Livro'}
+            </button>
+            {showAddBookForm && (
+              <div id="add-book-form">
+                <h2>Adicionar Livro</h2>
+                <input
+                  type="text"
+                  placeholder="Título"
+                  value={newBook.title}
+                  onChange={(e) => setNewBook({ ...newBook, title: e.target.value })}
+                />
+                <input
+                  type="text"
+                  placeholder="Autor"
+                  value={newBook.author}
+                  onChange={(e) => setNewBook({ ...newBook, author: e.target.value })}
+                />
+                <input
+                  type="text"
+                  placeholder="Gênero"
+                  value={newBook.genre}
+                  onChange={(e) => setNewBook({ ...newBook, genre: e.target.value })}
+                />
+                <input
+                  type="text"
+                  placeholder="Estado"
+                  value={newBook.state}
+                  onChange={(e) => setNewBook({ ...newBook, state: e.target.value })}
+                />
+                <input
+                  type="text"
+                  placeholder="Cidade"
+                  value={newBook.city}
+                  onChange={(e) => setNewBook({ ...newBook, city: e.target.value })}
+                />
+                {addBookError && <p style={{ color: 'red' }}>{addBookError}</p>}
+                <button onClick={handleAddBook}>Salvar Livro</button>
+              </div>
+            )}
           </main>
           <footer id="footer">
             <p>© 2024 Biblioteca Online. Todos os direitos reservados.</p>

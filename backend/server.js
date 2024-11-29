@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const db = require('./database'); // Certifique-se de que este arquivo está correto
+const db = require('./database');
 
 const app = express();
 const PORT = process.env.PORT || 3001; // Porta configurável pela variável de ambiente
@@ -43,6 +43,28 @@ app.get('/books', (req, res) => {
     } catch (error) {
         console.error('Erro ao buscar livros:', error.message);
         res.status(500).json({ error: 'Erro ao buscar livros.' });
+    }
+});
+
+// Rota para adicionar um livro
+app.post('/books', (req, res) => {
+    const { title, author, genre, availability, state, city } = req.body;
+
+    // Validação dos campos
+    if (!title || !author || !genre || !availability || !state || !city) {
+        return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
+    }
+
+    try {
+        const stmt = db.prepare(`
+            INSERT INTO books (title, author, genre, availability, state, city)
+            VALUES (?, ?, ?, ?, ?, ?)
+        `);
+        stmt.run(title, author, genre, availability, state, city);
+        res.status(201).json({ message: 'Livro adicionado com sucesso!' });
+    } catch (error) {
+        console.error('Erro ao adicionar livro:', error.message);
+        res.status(500).json({ error: 'Erro ao adicionar livro.' });
     }
 });
 

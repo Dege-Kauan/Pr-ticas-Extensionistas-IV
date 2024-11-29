@@ -1,6 +1,6 @@
 # 📚 Biblioteca Online
 
-![Biblioteca Online Logo](./frontend/public/logo.png)
+![Biblioteca Online Logo](./frontend/public/logo192.png)
 
 ## **Descrição do Projeto**
 A **Biblioteca Online** é uma aplicação web desenvolvida para gerenciar o empréstimo e a disponibilidade de livros. O projeto é responsivo e oferece uma interface intuitiva para login, cadastro de usuários e livros, além de permitir a busca e filtro de livros por estado e cidade.

@@ -1,0 +1,184 @@
+/* Reset de estilos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Configuração geral */
+html, body {
+  min-height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #647C84, #303946);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tela de Login */
+#login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  text-align: center;
+}
+
+#login-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+#login-form h2 {
+  margin-bottom: 20px;
+}
+
+#login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+#login-form button {
+  padding: 10px 20px;
+  background: #90ee90;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#login-form button:hover {
+  background: #76c776;
+}
+
+/* Cabeçalho */
+#header {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #3C4E56, #1C262C);
+  color: white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#logo {
+  max-width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+#header p {
+  font-size: 1.2rem;
+}
+
+/* Conteúdo principal */
+#content {
+  text-align: center;
+  padding: 30px 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  flex: 1;
+}
+
+#content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Filtros */
+#filters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+#filters select {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2); /* Fundo levemente transparente */
+  color: white; /* Texto branco */
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#filters select option {
+  background: rgba(255, 255, 255, 0.9); /* Fundo branco das opções */
+  color: black; /* Texto preto */
+}
+
+#filters select:hover {
+  background: rgba(255, 255, 255, 0.3); /* Fundo mais claro ao passar o mouse */
+}
+
+#filters select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Efeito de foco */
+}
+
+/* Lista de Livros */
+#books-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+#books-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+#books-list li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#books-list .status {
+  font-weight: bold;
+}
+
+#books-list .available {
+  color: #90ee90; /* Verde claro */
+}
+
+#books-list .unavailable {
+  color: #ff6b6b; /* Vermelho claro */
+}
+
+#books-list .reserved {
+  color: #ffa500; /* Laranja claro */
+}
+
+/* Rodapé */
+#footer {
+  background: linear-gradient(135deg, #3C4E56, #1C262C);
+  text-align: center;
+  padding: 15px;
+  color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin-top: auto;
+}

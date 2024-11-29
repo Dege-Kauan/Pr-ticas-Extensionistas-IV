@@ -66,9 +66,23 @@ O sistema foi desenvolvido como parte de um projeto acadêmico, atendendo aos re
 - Gerenciador de pacotes NPM;
 - Conexão com a internet para dependências e APIs.
 
-### **Passos para rodar o projeto**
+---
 
-1. **Clone o repositório**:
-   ```bash
-   git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
-   cd SEU_REPOSITORIO
+## **Conclusões Finais**
+O projeto **Biblioteca Online** atende aos critérios propostos, oferecendo uma aplicação funcional, intuitiva e com integração de tecnologias modernas. Além disso, a aplicação mobile via PWA proporciona maior acessibilidade e praticidade aos usuários. A infraestrutura configurada na nuvem e o uso de boas práticas de desenvolvimento tornam o sistema escalável e confiável.
+
+A experiência de desenvolvimento contribuiu para consolidar conhecimentos sobre React.js, Express.js, bancos de dados, configuração de infraestrutura em nuvem e construção de PWAs.
+
+---
+
+## **Palavras-chave**
+- **Biblioteca Online**
+- **PWA**
+- **Aplicação Responsiva**
+- **API RESTful**
+- **Railway**
+- **SQLite**
+- **React.js**
+- **Express.js**
+- **Infraestrutura na Nuvem**
+- **Gerenciamento de Livros**
